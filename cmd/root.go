@@ -166,6 +166,12 @@ func checkFiles(ctx context.Context, access string) (keys []string, n int, err e
 			keys = append(keys, fullKey)
 			n++
 		}
+		if objects.Err() != nil {
+			return keys, 0, errs.Wrap(objects.Err())
+		}
+	}
+	if buckets.Err() != nil {
+		return keys, 0, errs.Wrap(buckets.Err())
 	}
 
 	return keys, n, nil
