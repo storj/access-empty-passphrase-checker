@@ -18,7 +18,7 @@ You have 2 files uploaded without encryption in this project:
 sj://asdf/DEVELOPING.md
 sj://moby/README.md
 
-moby@thinkpad:~/dev/storj/access-empty-passphrase-checker$ accesschecker 1QiUipyf19MS5ZMC2y7knDt4jRtf53SgpuXnoX8mdfEqQkx2bUbXTdYhoAxZyioxaWhmjSJR2XHFcBuWJv85oPKSeJ7ZY6XQcUJdRQYrxiG1s6Gf2i6Xxrp1YyAbdG7kythpA6jxr5JBWnMffdioEha9DJWSeHrLUbLcAMTYRjZH1c2yXbg2uxNcAypjbs5dh4Gb4Ksyv4WN7jqQrRqx3eXqf873Z1zFCi8EaczhH4LhEenLgfmUbkL4NAkCRZ8EM5Zp89oP --output-empty-passphrase-access
+$ accesschecker 1QiUipyf19MS5ZMC2y7knDt4jRtf53SgpuXnoX8mdfEqQkx2bUbXTdYhoAxZyioxaWhmjSJR2XHFcBuWJv85oPKSeJ7ZY6XQcUJdRQYrxiG1s6Gf2i6Xxrp1YyAbdG7kythpA6jxr5JBWnMffdioEha9DJWSeHrLUbLcAMTYRjZH1c2yXbg2uxNcAypjbs5dh4Gb4Ksyv4WN7jqQrRqx3eXqf873Z1zFCi8EaczhH4LhEenLgfmUbkL4NAkCRZ8EM5Zp89oP --output-empty-passphrase-access
 
 You have 2 files uploaded without encryption in this project:
 
@@ -44,8 +44,13 @@ $ uplink access use generatedempty
 Switched default access to "generatedempty"
 $ uplink rm sj://asdf/DEVELOPING.md
 removed sj://asdf/DEVELOPING.md
-moby@thinkpad:~/dev/storj/storj$ uplink rm sj://moby/README.md
+$ uplink rm sj://moby/README.md
 removed sj://moby/README.md
+$ uplink access use <someotheraccess> 
+Switched default access to "<someotheraccess>"
+$ uplink access remove generatedempty
+Removed access "generatedempty" from "/home/moby/.config/storj/uplink/access.json"
+
 ```
 
 # Window 1
