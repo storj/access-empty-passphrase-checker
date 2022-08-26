@@ -3,8 +3,11 @@
 ## Help text
 
 ```
-$ accesschecker
-You are missing an argument.
+ accesschecker --help
+This command is used to determine if you have previously uploaded files with an empty encryption passphrase to a Storj DCS project.
+To use, go to the Satellite UI, and generate a new access grant for the project you are interested in.
+Then, run the command with the access you copied from the Satellite UI. It will tell you if you have any files uploaded with an empty encryption passphrase, and list the filepaths.
+If you need an (unsafe) "no passphrase" access so that you can download and remove your unencrypted files using uplink, run with the flag "--output-empty-passphrase-access".
 
 Usage:
   accesschecker [accessgrant] [flags]
@@ -21,7 +24,7 @@ The access you provide can be a new unrestricted access grant created from the S
 ```
 $ accesschecker 1QiUipyf19MS5ZMC2y7knDt4jRtf53SgpuXnoX8mdfEqQkx2bUbXTdYhoAxZyioxaWhmjSJR2XHFcBuWJv85oPKSeJ7ZY6XQcUJdRQYrxiG1s6Gf2i6Xxrp1YyAbdG7kythpA6jxr5JBWnMffdioEha9DJWSeHrLUbLcAMTYRjZH1c2yXbg2uxNcAypjbs5dh4Gb4Ksyv4WN7jqQrRqx3eXqf873Z1zFCi8EaczhH4LhEenLgfmUbkL4NAkCRZ8EM5Zp89oP
 
-You have 2 files uploaded without encryption in this project:
+You have 2 files uploaded with an empty encryption passphrase in this project:
 
 sj://asdf/DEVELOPING.md
 sj://moby/README.md
@@ -32,18 +35,18 @@ sj://moby/README.md
 ```
 $ accesschecker 1QiUipyf19MS5ZMC2y7knDt4jRtf53SgpuXnoX8mdfEqQkx2bUbXTdYhoAxZyioxaWhmjSJR2XHFcBuWJv85oPKSeJ7ZY6XQcUJdRQYrxiG1s6Gf2i6Xxrp1YyAbdG7kythpA6jxr5JBWnMffdioEha9DJWSeHrLUbLcAMTYRjZH1c2yXbg2uxNcAypjbs5dh4Gb4Ksyv4WN7jqQrRqx3eXqf873Z1zFCi8EaczhH4LhEenLgfmUbkL4NAkCRZ8EM5Zp89oP --output-empty-passphrase-access
 
-You have 2 files uploaded without encryption in this project:
+You have 2 files uploaded with an empty encryption passphrase in this project:
 
 sj://asdf/DEVELOPING.md
 sj://moby/README.md
 
 ==================================================
 
-Generated empty passphrase grant:
+Generated access grant with empty passphrase:
 
 1QiUipyf19MS5ZMC2y7knDt4jRtf53SgpuXnoX8mdfEqQkx2bUbXTdYhoAxZyioxaWhmjSJR2XHFcBuWJv85oPKSeJ7ZY6XQcUJdRQYrxiG1s6Gf2i6Xxrp1YyAbdG7kythpA6jxr5JBWnMffdioEha9DJWSeHrLUbLcAMTYRjZH1c2yXbg2uxNcAypjbs5dh4Gb4Ksyv4WN7jqQrRqx3eXqf873Z1zFCi8EaczhH4LhEenLgfmUbkL4NAkCRZ8EM5Zp89oP
 
-WARNING: This access is capable of uploading and downloading unencrypted files to and from your project. We recommend using it only to download and subsequently remove files which are unencrypted.
+WARNING: This access is capable of uploading and downloading files with an empty passphrase to and from your project. We recommend using it only to download and subsequently remove files which are unencrypted.
 
 ```
 
@@ -102,5 +105,5 @@ upload DEVELOPING.md to sj://asdf/DEVELOPING.md
 
 ```
 $ accesschecker 1QiUipyf19MS5ZMC2y7knDt4jRtf53SgpuXnoX8mdfEqQkx2bUbXTdYhoAxZyioxaWhmjSJR2XHFcBuWJv85oPKSeJ7ZY6XQcUJdRQYrxiG1s6Gf2i6Xxrp1YyAbdG7kythpA6jxr5JBWnMffdioEha9DJWSeHrLUbLcAMTYRjZH1c2yXbg2uxNcAypjbs5dh4Gb4Ksyv4WN7jqQrRqx3eXqf873Z1zFCi8EaczhH4LhEenLgfmUbkL4NAkCRZ8EM5Zp89oP --output-empty-passphrase-access
-You do not have any files uploaded without encryption in this project.
+You do not have any files uploaded with an empty encryption passphrase in this project.
 ```

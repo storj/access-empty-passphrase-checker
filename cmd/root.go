@@ -31,10 +31,10 @@ var outputtingGrant bool
 var rootCmd = &cobra.Command{
 	Use:   "accesschecker [accessgrant]",
 	Short: "Check for files uploaded with an empty passphrase in a project",
-	Long: `This command is used to determine if you have previously uploaded unencrypted files to a Storj DCS project.
-			To use, go to the Satellite UI, and generate a new access grant for the project you are interested in.
-			Then, run the command with the access you copied from the Satellite UI. It will tell you if you have any unencrypted files uploaded, and what they are called.
-			If you need an (unsafe) "no passphrase" access so that you can download and remove your unencrypted files using uplink, run with the flag "--output-empty-passphrase-access".`,
+	Long: `This command is used to determine if you have previously uploaded files with an empty encryption passphrase to a Storj DCS project.
+To use, go to the Satellite UI, and generate a new access grant for the project you are interested in.
+Then, run the command with the access you copied from the Satellite UI. It will tell you if you have any files uploaded with an empty encryption passphrase, and list the filepaths.
+If you need an (unsafe) "no passphrase" access so that you can download and remove your unencrypted files using uplink, run with the flag "--output-empty-passphrase-access".`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {
 			cmd.Println("You are missing an argument.\n")
@@ -113,22 +113,22 @@ func beginCheck(cmd *cobra.Command, accessArg string) error {
 	}
 	keys, n, err := checkFiles(ctx, accessGrant)
 	if err != nil {
-		return errs.New("Error checking for unencrypted files: %+v", err)
+		return errs.New("Error checking for files uploaded with empty passphrase: %+v", err)
 	}
 	if n > 0 {
-		cmd.Printf("\nYou have %d files uploaded without encryption in this project:\n\n", n)
+		cmd.Printf("\nYou have %d files uploaded with an empty encryption passphrase in this project:\n\n", n)
 		for _, k := range keys {
 			cmd.Println(k)
 		}
 
 		if outputtingGrant {
 			cmd.Println("\n==================================================\n")
-			cmd.Printf("Generated empty passphrase grant:\n\n%s\n\n", accessGrant)
-			cmd.Println("WARNING: This access is capable of uploading and downloading unencrypted files to and from your project. We recommend using it only to download and subsequently remove files which are unencrypted.")
+			cmd.Printf("Generated access grant with empty passphrase:\n\n%s\n\n", accessGrant)
+			cmd.Println("WARNING: This access is capable of uploading and downloading files with an empty passphrase to and from your project. We recommend using it only to download and subsequently remove files which are unencrypted.")
 		}
 		return nil
 	}
-	cmd.Println("You do not have any files uploaded without encryption in this project.")
+	cmd.Println("You do not have any files uploaded with an empty encryption passphrase in this project.")
 	return nil
 }
 
