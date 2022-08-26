@@ -1,7 +1,6 @@
-/*
-Copyright © 2022 NAME HERE <EMAIL ADDRESS>
+// Copyright (C) 2022 Storj Labs, Inc.
+// See LICENSE for copying information.
 
-*/
 package main
 
 import (
