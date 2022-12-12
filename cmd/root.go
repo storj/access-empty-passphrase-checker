@@ -56,7 +56,7 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().BoolVarP(&outputtingGrant, "output-empty-passphrase-access", "o", false, "Output generated empty passphrase access (only use to download/remove files)")
+	rootCmd.Flags().BoolVarP(&outputtingGrant, "output-empty-passphrase-access", "o", true, "Output generated empty passphrase access (only use to download/remove files)")
 }
 
 func beginCheck(cmd *cobra.Command, accessArg string) error {
